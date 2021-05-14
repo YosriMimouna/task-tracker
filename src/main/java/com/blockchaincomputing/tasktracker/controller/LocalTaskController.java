@@ -2,6 +2,7 @@ package com.blockchaincomputing.tasktracker.controller;
 
 
 import com.blockchaincomputing.tasktracker.model.LocalTask;
+import com.blockchaincomputing.tasktracker.repository.LocalTaskRepository;
 import com.blockchaincomputing.tasktracker.service.LocalTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/local/tasks")
-public class LocalController {
-
+public class LocalTaskController {
 
     @Autowired
-    LocalTaskService localTaskService;
+    private LocalTaskService localTaskService;
 
     @PostMapping(value = "/")
     public ResponseEntity<LocalTask> createTask() {
@@ -24,7 +24,7 @@ public class LocalController {
     }
 
     @GetMapping(value = "/count")
-    public ResponseEntity<Integer> getTaskCount() {
+    public ResponseEntity<Long> getTaskCount() {
         return ResponseEntity.ok(this.localTaskService.getTaskCount());
     }
 }
