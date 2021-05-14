@@ -8,7 +8,7 @@ before_install:
 
 script:
   - ./gradlew build
-  - docker build -f Dockerfile -t task-tracker .
+  - docker build -f Dockerfile -t yosri96/task-tracker .
 
 deploy:
   provider: script
