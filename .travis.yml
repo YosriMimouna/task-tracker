@@ -3,11 +3,10 @@ jdk:
   - openjdk11
 service:
   - docker
-
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-script: :
+script:
   - ./gradlew build
   - docker build -f Dockerfile -t task-tracker .
 
