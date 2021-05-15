@@ -3,6 +3,7 @@ jdk:
   - openjdk11
 service:
   - docker
+  - mongodb
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
