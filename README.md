@@ -3,8 +3,8 @@
 [![Build Status](https://www.travis-ci.com/YosriMimouna/task-tracker.svg?branch=main)](https://www.travis-ci.com/YosriMimouna/task-tracker)
 
 TaskTracker is a Java API Allowing:
-* Create LocalTask Objects and storing each created task on Mongodb Atlas
-* Interact with Smart-Contract deploed on Goerli to trigger newTask() or call takCount() methods (in progress)
+* Create LocalTask Objects and storing each created task on Mongodb Atlas.
+* Interact with Smart-Contract deployed on Goerli to trigger newTask() or call takCount() methods.
 
 ## Tech
 
