@@ -27,29 +27,26 @@ import java.util.Arrays;
 public class BlockchainTaskService {
 
     public BigInteger getSmartContractTaskCount() throws Exception {
-        Credentials credentials = Credentials.create(BlockchainConfigConstants.CIPHER_TEXT);
         BigInteger taskCount = new BigInteger("0");
+
+        Credentials credentials = Credentials.create(BlockchainConfigConstants.PRIVATE_KEY);
+
         Web3j web3j = Web3j.build(new HttpService("https://rpc.slock.it/goerli"));
         TaskCounter taskCounter = TaskCounter.load(BlockchainConfigConstants.CONTRACT_ADDRESS, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(30_000) ,BigInteger.valueOf(30_000)));
-
-        if (taskCounter.isValid()) {
-            taskCount = taskCounter.taskCount().send();
-        }
+        taskCount = taskCounter.taskCount().send();
         web3j.shutdown();
         return taskCount;
     }
 
     public String addBlockChainTask() throws Exception {
-        Credentials credentials = Credentials.create(BlockchainConfigConstants.CIPHER_TEXT);
+        Credentials credentials = Credentials.create(BlockchainConfigConstants.PRIVATE_KEY);
         BlockchainTask blockchainTask = new BlockchainTask();
         TransactionReceipt transaction = new TransactionReceipt();
         Web3j web3j = Web3j.build(new HttpService("https://rpc.slock.it/goerli"));
 
-        TaskCounter taskCounter = TaskCounter.load(BlockchainConfigConstants.CONTRACT_ADDRESS, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(30_000) ,BigInteger.valueOf(30_000)));
+        TaskCounter taskCounter = TaskCounter.load(BlockchainConfigConstants.CONTRACT_ADDRESS, web3j, credentials, new StaticGasProvider(BigInteger.valueOf(150_000) ,BigInteger.valueOf(150_000)));
+        transaction = taskCounter.newTask().send();
 
-        if (taskCounter.isValid()) {
-            transaction = taskCounter.newTask().send();
-        }
         web3j.shutdown();
         System.out.println(transaction);
         System.out.println(transaction.toString());
