@@ -11,6 +11,7 @@ before_script:
   - sleep 15
 
 script:
+  - echo "skipping tests"
   - ./gradlew build
   - docker build -f Dockerfile -t yosri96/task-tracker .
 
