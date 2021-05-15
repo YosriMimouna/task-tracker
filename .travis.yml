@@ -9,7 +9,6 @@ before_install:
 
 script:
   - ./gradlew build
-  - echo "skipping tests"
   - docker build -f Dockerfile -t yosri96/task-tracker .
 
 deploy:
