@@ -15,12 +15,20 @@ public class LocalTaskService {
     @Autowired
     private LocalTaskRepository localTaskRepository;
 
+    /**
+     * Creates LocalTask object and stores it in LocalTask collection
+     * @return created LocalTask
+     */
     public LocalTask createTask() {
         LocalTask newTask = localTaskRepository.save(new LocalTask(new Date()));
         log.info("new task created at: " + newTask.getAddDate());
         return newTask;
     }
 
+    /**
+     * Retrieves number of stored LocalTask objects
+     * @return stored LocalTask objects count
+     */
     public long getTaskCount() {
         return this.localTaskRepository.count();
     }

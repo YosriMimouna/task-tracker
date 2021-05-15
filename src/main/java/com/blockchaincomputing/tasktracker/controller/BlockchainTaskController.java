@@ -13,7 +13,9 @@ import org.web3j.abi.datatypes.generated.Uint256;
 
 import java.io.IOException;
 import java.math.BigInteger;
-
+/**
+ * Controller responsible for intercations with the deployed Smart-Contract
+ * **/
 @RestController
 @RequestMapping(value = "/blockchain/tasks")
 public class BlockchainTaskController {
@@ -21,6 +23,10 @@ public class BlockchainTaskController {
     @Autowired
     private BlockchainTaskService blockchainTaskService;
 
+    /**
+     * Endpoint that calls method taskCount() on deployed Smart-Contract
+     * @Returns number of tasks
+     * **/
     @GetMapping(value = "/count")
     public ResponseEntity<?> getSmartContractTaskCount() {
         try {
@@ -31,6 +37,9 @@ public class BlockchainTaskController {
         }
     }
 
+    /**
+     * Endpoint that triggers newTask() method on deployed Smart-Contract
+     * **/
     @PostMapping
     public ResponseEntity<?> test() {
         try {
