@@ -21,7 +21,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return DB;
+        return "task-tracker";
     }
 
     @Override
