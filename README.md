@@ -21,6 +21,13 @@ Simple Gradle Build
 ./gradlew build
 ```
 
+## Run
+
+Simple Gradle Build
+```sh
+java -jar ./build/libs/task-tracker-0.0.1-SNAPSHOT.jar
+```
+
 ## Docker
 
 By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
