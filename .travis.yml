@@ -7,12 +7,9 @@ services:
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-before_script:
-  - sleep 15
-
 script:
-  - echo "skipping tests"
   - ./gradlew build
+  - echo "skipping tests"
   - docker build -f Dockerfile -t yosri96/task-tracker .
 
 deploy:
