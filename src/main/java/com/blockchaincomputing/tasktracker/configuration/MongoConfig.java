@@ -26,7 +26,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString(URI);
+        ConnectionString connectionString = new ConnectionString("mongodb+srv://yosri:yosri2021$@cluster0.mozfi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
