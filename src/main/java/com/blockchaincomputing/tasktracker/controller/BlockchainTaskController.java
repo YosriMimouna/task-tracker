@@ -8,11 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.web3j.abi.datatypes.Uint;
-import org.web3j.abi.datatypes.generated.Uint256;
 
-import java.io.IOException;
-import java.math.BigInteger;
 /**
  * Controller responsible for intercations with the deployed Smart-Contract
  * **/

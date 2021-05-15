@@ -6,24 +6,13 @@ import com.blockchaincomputing.tasktracker.model.TaskCounter;
 import com.blockchaincomputing.tasktracker.repository.BlockchainTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.web3j.abi.FunctionEncoder;
-import org.web3j.abi.datatypes.Function;
 import org.web3j.crypto.Credentials;
-import org.web3j.crypto.RawTransaction;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.DefaultBlockParameterName;
-import org.web3j.protocol.core.methods.request.Transaction;
-import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
-import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.gas.DefaultGasProvider;
 import org.web3j.tx.gas.StaticGasProvider;
 
-import java.io.IOException;
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Date;
 
 @Service
@@ -32,6 +21,11 @@ public class BlockchainTaskService {
     @Autowired
     private BlockchainTaskRepository blockchainTaskRepository;
 
+    /**
+     * calls taskCount function of Smart-Contract deployed on Goerli
+     * @return number of tasks created
+     * @throws Exception
+     */
     public BigInteger getSmartContractTaskCount() throws Exception {
         BigInteger taskCount = new BigInteger("0");
 
@@ -44,6 +38,11 @@ public class BlockchainTaskService {
         return taskCount;
     }
 
+    /**
+     * Trigger newTask function on deployed Smart-Contract
+     * @return
+     * @throws Exception
+     */
     public String addBlockChainTask() throws Exception {
         Credentials credentials = Credentials.create(BlockchainConfigConstants.PRIVATE_KEY);
         BlockchainTask blockchainTask = new BlockchainTask();
